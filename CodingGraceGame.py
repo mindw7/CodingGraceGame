@@ -440,7 +440,51 @@ def green_magic_room(player_info_arg):
         print("The magician waves his hand and you are whisked away...\n")
         return "flee"
 
+def golden_casino_room(player_info_arg):
+    """A dazzling golden casino where luck determines your fate."""
+    print("\n=== GOLDEN CASINO ROOM ===")
+    print("Bright golden lights flash all around you.")
+    print("A dealer smiles and places a single golden coin on the table.")
+    print('"Care to test your luck?"')
 
+    player_info_arg["location"] = "Golden Casino Room"
+
+    player_info_arg["health"] += 5
+    if player_info_arg["health"] > 200:
+        player_info_arg["health"] = 200
+    elif player_info_arg["health"] < 0:
+        player_info_arg["health"] = 0
+
+    item = "Golden Chip"
+    if item not in player_info_arg["inventory"]:
+        player_info_arg["inventory"].append(item)
+        print("You receive a Golden Chip!")
+
+    player_info_arg["choices"].append("Golden Casino Room")
+
+    show_player_info(player_info_arg)
+
+    print("The dealer offers a game of chance.")
+    choice = input("[play | flee] > ").strip().lower()
+
+    if choice == "play":
+        outcome = random.choice(["win", "lose", "escape"])
+
+        if outcome == "win":
+            you_won("Jackpot! You win the casino's grand prize!")
+        elif outcome == "lose":
+            you_died("The casino takes everything. House always wins.")
+        else:
+            print("You break even and slip out of the casino quietly.")
+            return "flee"
+
+    elif "flee" in choice:
+        return "flee"
+
+    else:
+        you_died("The dealer dislikes confusion. Security escorts you out permanently.")
+
+    return player_info_arg
 # ===========================================================================
 # CONTROL FUNCTIONS
 # ===========================================================================
