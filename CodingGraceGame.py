@@ -488,15 +488,15 @@ def golden_casino_room(player_info_arg):
 
 ##2 
 
-def library_room(player_info_arg):
-    """Library room where the player can read books or leave."""
+def silver(player_info_arg):
+    """Silver room where the player can read books or leave."""
 
     # Enter the room
-    print("\nYou enter the Library Room.")
+    print("\nYou enter the Silver Room.")
     print("Shelves full of old books surround you.")
 
     # Update player location
-    player_info_arg["location"] = "Library Room"
+    player_info_arg["location"] = "Silver Room"
 
     # Give the player an item
     item = "Ancient Book"
@@ -505,7 +505,7 @@ def library_room(player_info_arg):
         print("You found an Ancient Book!")
 
     # Track room visit
-    player_info_arg["choices"].append("Library Room")
+    player_info_arg["choices"].append("Silver Room")
 
     show_player_info(player_info_arg)
 
@@ -518,7 +518,7 @@ def library_room(player_info_arg):
         return player_info_arg
 
     elif action.startswith("leave"):
-        print("You quietly leave the library.")
+        print("You quietly leave the Silver Room.")
         return "flee"
 
     else:
