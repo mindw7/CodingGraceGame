@@ -487,6 +487,7 @@ def golden_casino_room(player_info_arg):
     return player_info_arg
 
 ##2 
+
 def library_room(player_info_arg):
     """Library room where the player can read books or leave."""
 
@@ -522,6 +523,7 @@ def library_room(player_info_arg):
 
     else:
         you_died("A cursed book drains your life!")
+        
 # ===========================================================================
 # CONTROL FUNCTIONS
 # ===========================================================================
