@@ -624,12 +624,12 @@ def start_new_adventure(player_info_arg):
     while True:
         print_new_dungeon()
         print("You enter a room, and you see a red door to your left "
-              "and blue and green doors to your right.")
-        door_picked = input("Do you pick the red door, blue door, "
+              "and blue and green doors to your right and a gold, purple and silver room.")
+        door_picked = input("Do you pick the red door, blue door, silver door, gold door, purple door "
                             "or green door? > ")
 
         # We compare only the first few characters so that inputs like
-        # "red door", "blue", or "green one" all work.
+        # "red door", "blue", or, " purple ","silver", "gold" , "green one" all work.
         door = door_picked.strip().lower()
 
         if door.startswith("red"):
@@ -638,8 +638,14 @@ def start_new_adventure(player_info_arg):
             room_result = blissful_ignorance_of_illusion_room(player_info_arg)
         elif door.startswith("green"):
             room_result = green_magic_room(player_info_arg)
+         elif door.startswith("gold"):
+            room_result = golden_casino_room(player_info_arg)
+         elif door.startswith("purple"):
+            room_result = purple_hidden_ingredient_room(player_info_arg)
+         elif door.startswith("silver"):
+            room_result = silver(player_info_arg)
         else:
-            print("Sorry, it's either 'red', 'blue', or 'green' as the "
+            print("Sorry, it's either 'red', 'blue', 'silver','gold' , 'purple' or 'green' as the "
                   "answer. You're the weakest link, goodbye!")
             # Continue the loop so the player can try again.
             continue
