@@ -485,6 +485,46 @@ def golden_casino_room(player_info_arg):
         you_died("The dealer dislikes confusion. Security escorts you out permanently.")
 
     return player_info_arg
+
+#Author 1
+def purple_hidden_ingredient_room(player_info_arg):
+    """Try guessing the hidden ingredient in this Bolognese Pasta Dish."""
+
+    print("\n==== Guessing the Hidden Ingredient? ====")
+    print("The chef appears behind the counter.")
+    print("The dish is going to be Bolognese pasta.")
+    print("The original recipe includes ground beef, crushed tomatoes, garlic, tomato paste, onion, milk, salt, and oregano.")
+    print("You only have one chance to guess the hidden ingredient to receive a gold coin.")
+
+    player_info_arg["location"] = "purple_hidden_ingredient_room"
+    player_info_arg["choices"].append("purple_hidden_ingredient_room")
+
+    show_player_info(player_info_arg)
+
+    damage = 10
+    knowledge = "Guessing Skills"
+
+    player_info_arg["health"] -= damage
+
+    if knowledge not in player_info_arg["inventory"]:
+        player_info_arg["inventory"].append(knowledge)
+        print(f"The painful truth costs you {damage} health but grants you {knowledge}.")
+
+    print("You either guess the ingredient correctly or leave right now.")
+
+    choice = input("Type 'Play' to guess or 'flee' to leave: ")
+
+    if choice == "Play":
+        guess = input("Guess the hidden ingredient (Paprika Powder, Nutmeg Powder, Mushroom Powder): ")
+
+        if guess == "Nutmeg Powder":
+            you_won("You guessed the hidden ingredient correctly. Congratulations! You earned a gold coin!")
+        else:
+            print("You lost the guessing game. Get out of here!")
+
+    elif choice == "flee":
+        print("I'll be making my way out of here. I'm not a big pasta fan.")
+        return "flee"
 # ===========================================================================
 # CONTROL FUNCTIONS
 # ===========================================================================
