@@ -638,11 +638,11 @@ def start_new_adventure(player_info_arg):
             room_result = blissful_ignorance_of_illusion_room(player_info_arg)
         elif door.startswith("green"):
             room_result = green_magic_room(player_info_arg)
-         elif door.startswith("gold"):
+        elif door.startswith("gold"):
             room_result = golden_casino_room(player_info_arg)
-         elif door.startswith("purple"):
+        elif door.startswith("purple"):
             room_result = purple_hidden_ingredient_room(player_info_arg)
-         elif door.startswith("silver"):
+        elif door.startswith("silver"):
             room_result = silver(player_info_arg)
         else:
             print("Sorry, it's either 'red', 'blue', 'silver','gold' , 'purple' or 'green' as the "
