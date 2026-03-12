@@ -525,6 +525,44 @@ def purple_hidden_ingredient_room(player_info_arg):
     elif choice == "flee":
         print("I'll be making my way out of here. I'm not a big pasta fan.")
         return "flee"
+##2 
+
+def silver(player_info_arg):
+    """Silver room where the player can read books or leave."""
+
+    # Enter the room
+    print("\nYou enter the Silver Room.")
+    print("Shelves full of old books surround you.")
+
+    # Update player location
+    player_info_arg["location"] = "Silver Room"
+
+    # Give the player an item
+    item = "Ancient Book"
+    if item not in player_info_arg["inventory"]:
+        player_info_arg["inventory"].append(item)
+        print("You found an Ancient Book!")
+
+    # Track room visit
+    player_info_arg["choices"].append("Silver Room")
+
+    show_player_info(player_info_arg)
+
+    # Ask player what to do
+    action = input("Do you read a book or leave? > ").strip().lower()
+
+    if action.startswith("read"):
+        print("You learn something useful from the books.")
+        player_info_arg["health"] += 5
+        return player_info_arg
+
+    elif action.startswith("leave"):
+        print("You quietly leave the Silver Room.")
+        return "flee"
+
+    else:
+        you_died("A cursed book drains your life!")
+        
 # ===========================================================================
 # CONTROL FUNCTIONS
 # ===========================================================================
