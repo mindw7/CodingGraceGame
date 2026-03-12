@@ -485,6 +485,45 @@ def golden_casino_room(player_info_arg):
         you_died("The dealer dislikes confusion. Security escorts you out permanently.")
 
     return player_info_arg
+
+##2 
+
+def library_room(player_info_arg):
+    """Library room where the player can read books or leave."""
+
+    # Enter the room
+    print("\nYou enter the Library Room.")
+    print("Shelves full of old books surround you.")
+
+    # Update player location
+    player_info_arg["location"] = "Library Room"
+
+    # Give the player an item
+    item = "Ancient Book"
+    if item not in player_info_arg["inventory"]:
+        player_info_arg["inventory"].append(item)
+        print("You found an Ancient Book!")
+
+    # Track room visit
+    player_info_arg["choices"].append("Library Room")
+
+    show_player_info(player_info_arg)
+
+    # Ask player what to do
+    action = input("Do you read a book or leave? > ").strip().lower()
+
+    if action.startswith("read"):
+        print("You learn something useful from the books.")
+        player_info_arg["health"] += 5
+        return player_info_arg
+
+    elif action.startswith("leave"):
+        print("You quietly leave the library.")
+        return "flee"
+
+    else:
+        you_died("A cursed book drains your life!")
+        
 # ===========================================================================
 # CONTROL FUNCTIONS
 # ===========================================================================
